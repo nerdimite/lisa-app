@@ -10,41 +10,51 @@ import ArrowNext from "../public/assets/Icon/eva_arrow-next-fill.svg";
 const Testimoni = ({
   listTestimoni = [
     {
-      name: "iezh Robert",
+      name: "Aastha Gupta",
       image: "/assets/people-3.png",
-      city: "Warsaw",
-      country: "Poland",
+      city: "Ghaziabad",
+      country: "India",
       rating: "4.5",
       testimoni:
         "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
     },
     {
-      name: "iezh Robert",
+      name: "Bhavya Gupta",
       image: "/assets/people-3.png",
-      city: "Warsaw",
-      country: "Poland",
+      city: "Ghaziabad",
+      country: "India",
       rating: "4.5",
       testimoni:
         "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
     },
     {
-      name: "iezh Robert",
+      name: "Riya Gupta",
       image: "/assets/people-3.png",
-      city: "Warsaw",
-      country: "Poland",
+      city: "Delhi",
+      country: "India",
       rating: "4.5",
       testimoni:
         "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
     },
     {
-      name: "iezh Robert",
+      name: "Meemansa Gupta",
       image: "/assets/people-3.png",
-      city: "Warsaw",
-      country: "Poland",
+      city: "Chandigarh",
+      country: "India",
       rating: "4.5",
       testimoni:
         "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
     },
+    {
+      name: "Tanvi Gupta",
+      image: "/assets/people-3.png",
+      city: "New Delhi",
+      country: "India",
+      rating: "4.5",
+      testimoni:
+        "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
+    },
+
   ],
 }) => {
   const settings = {
@@ -105,7 +115,7 @@ const Testimoni = ({
                       {listTestimonis.name}
                     </p>
                     <p className="text-sm text-black-500 capitalize">
-                      {listTestimonis.city},{listTestimonis.country}
+                      {listTestimonis.city}, {listTestimonis.country}
                     </p>
                   </div>
                 </div>
