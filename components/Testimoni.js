@@ -11,48 +11,48 @@ const Testimoni = ({
   listTestimoni = [
     {
       name: "Aastha Gupta",
-      image: "/assets/people-3.png",
-      city: "Ghaziabad",
+      image: "/assets/Bhavya.png",
+      city: "Shipra Riviera",
       country: "India",
-      rating: "4.5",
+      rating: "4.9",
       testimoni:
-        "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
+        "Wow... I am very happy to use this tool, it turned out to be more than my expectations and so far there have been no problems. LISA always the best.",
     },
     {
       name: "Bhavya Gupta",
-      image: "/assets/people-3.png",
-      city: "Ghaziabad",
+      image: "/assets/Bhavya.png",
+      city: "Kaveri Lane",
       country: "India",
-      rating: "4.5",
+      rating: "4.8",
       testimoni:
-        "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
+        "This tool has helped in my work, LISA is very easy to use and in the application there are many features that are very useful for me. Thank you for making it.",
     },
     {
-      name: "Riya Gupta",
-      image: "/assets/people-3.png",
-      city: "Delhi",
+      name: "Ria Gupta",
+      image: "/assets/Ria.png",
+      city: "Vaishali",
       country: "India",
-      rating: "4.5",
+      rating: "5.0",
       testimoni:
-        "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
+        "Now I can sleep without worrying about the meetings I may miss. Thanks a ton LISA! You saved me from attending those long boring meetings!",
     },
     {
       name: "Meemansa Gupta",
-      image: "/assets/people-3.png",
+      image: "/assets/Meemansa.png",
       city: "Chandigarh",
       country: "India",
-      rating: "4.5",
+      rating: "4.7",
       testimoni:
-        "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
+        "One of the best tools one can use to manage their meetings. It is very easy to use and has a lot of features. I would recommend it to everyone.",
     },
     {
       name: "Tanvi Gupta",
-      image: "/assets/people-3.png",
+      image: "/assets/Tanvi.png",
       city: "New Delhi",
       country: "India",
-      rating: "4.5",
+      rating: "4.8",
       testimoni:
-        "Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best",
+        "This app is very useful for me, I can manage my meetings easily and I can also search specific parts of the meeting. Thank you LISA for making my life easier.",
     },
 
   ],
@@ -106,8 +106,8 @@ const Testimoni = ({
                 <div className="flex order-2 xl:order-1">
                   <Image
                     src={listTestimonis.image}
-                    height={50}
-                    width={50}
+                    height="70px"
+                    width="70px"
                     alt="Icon People"
                   />
                   <div className="flex flex-col ml-5 text-left">
@@ -126,7 +126,7 @@ const Testimoni = ({
                   </span>
                 </div>
               </div>
-              <p className="mt-5 text-left">“{listTestimonis.testimoni}”.</p>
+              <p className="mt-5 text-left">“{listTestimonis.testimoni}”</p>
             </div>
           </div>
         ))}

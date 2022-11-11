@@ -28,8 +28,8 @@ const Header = () => {
             {/* <LogoVPN className="h-8 w-auto" /> */}
             <Image 
               src="/assets/LisaLogo.png"
-              height={60}
-              width={60}
+              height={50}
+              width={100}
             />
             {/* </div> */}
           </div>

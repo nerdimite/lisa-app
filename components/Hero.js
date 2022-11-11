@@ -8,19 +8,19 @@ import ScrollAnimationWrapper from "./Layout/ScrollAnimationWrapper";
 const Hero = ({
   listUser = [
     {
-      name: "In Video Search",
-      //number: "In Video Search",
-      icon: "/assets/Icon/heroicons_sm-user.svg",
+      //name: "In Video Search",
+      number: "In Video Search",
+      icon: "/assets/Icon/search.png",
     },
     {
-      name: "Locations",
-      number: "20",
-      icon: "/assets/Icon/gridicons_location.svg",
+      //name: "Locations",
+      number: "Minutes of Meeting",
+      icon: "/assets/Icon/MOM.png",
     },
     {
-      name: "Server",
-      number: "50",
-      icon: "/assets/Icon/bx_bxs-server.svg",
+      //name: "Server",
+      number: "Full Meeting Transcription",
+      icon: "/assets/Icon/Transcription.png",
     },
   ],
 }) => {
@@ -70,10 +70,10 @@ const Hero = ({
             >
               <div className="flex mx-auto w-40 sm:w-auto">
                 <div className="flex items-center justify-center bg-orange-100 w-12 h-12 mr-6 rounded-full">
-                  <img src={listUsers.icon} className="h-6 w-6" />
+                  <img src={listUsers.icon} className="h-10 w-10" />
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-xl text-black-600 font-bold">
+                  <p className="mt-2 text-xl text-black-600 font-bold">
                     {listUsers.number}
                   </p>
                   <p className="text-lg text-black-500">{listUsers.name}</p>
