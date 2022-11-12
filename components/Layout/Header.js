@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Link as LinkScroll } from "react-scroll";
 import ButtonOutline from "../misc/ButtonOutline.";
 import Image from "next/image";
-import LogoVPN from "../../public/assets/Logo.svg";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
@@ -14,6 +14,7 @@ const Header = () => {
       setScrollActive(window.scrollY > 20);
     });
   }, []);
+  const router = useRouter();
   return (
     <>
       <header
@@ -26,11 +27,9 @@ const Header = () => {
           <div className="col-start-1 col-end-2 flex items-center">
             {/* <div className="w-auto h-1"> */}
             {/* <LogoVPN className="h-8 w-auto" /> */}
-            <Image 
-              src="/assets/LisaLogo.png"
-              height={50}
-              width={100}
-            />
+            <a href="/">
+              <Image src="/assets/LisaLogo.png" height={50} width={100} />
+            </a>
             {/* </div> */}
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
@@ -95,7 +94,9 @@ const Header = () => {
                   Sign In
               </a>
             </Link> */}
-            <ButtonOutline>Meet Lisa</ButtonOutline>
+            <ButtonOutline handleClick={() => router.push("/lisa")}>
+              Meet Lisa
+            </ButtonOutline>
           </div>
         </nav>
       </header>
