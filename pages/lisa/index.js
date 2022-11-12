@@ -13,13 +13,44 @@ import {
   ButtonInline,
 } from "@tremor/react";
 import { useState, useEffect } from "react";
-import ButtonPrimary from "../../components/misc/ButtonPrimary";
+import dynamic from "next/dynamic";
+const ReactJson = dynamic(import("react-json-view"), { ssr: false });
 import { useRouter } from "next/router";
+
+const Label = (props) => {
+  return (
+    <div className="text-md md:text-lg mb-1 text-gray-600 font-semibold">
+      {props.children}
+    </div>
+  );
+};
+
+const JSONView = (props) => {
+  return (
+    <div className="w-full overflow-hidden rounded-md mb-4">
+      <ReactJson
+        src={props.data}
+        name={false}
+        theme="harmonic"
+        style={{ padding: "10px" }}
+        displayArrayKey={false}
+        collapseStringsAfterLength={40}
+        displayObjectSize={true}
+        displayDataTypes={false}
+        quotesOnKeys={false}
+      />
+    </div>
+  );
+};
 
 export default function Input() {
   const [input, setInput] = useState("");
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [output, setOutput] = useState(null);
+  const [jobId, setJobId] = useState(null);
+  const [query, setQuery] = useState(null);
+  const [seek, setSeek] = useState(0);
   const router = useRouter();
 
   return (
@@ -27,9 +58,9 @@ export default function Input() {
       <SeoHead title="Dashboard | LISA" />
       <DashHeader />
       <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto pb-24">
-        <ColGrid numColsLg={6} gapX="gap-x-6" gapY="gap-y-6" marginTop="mt-6">
+        <ColGrid numColsLg={8} gapX="gap-x-6" gapY="gap-y-6" marginTop="mt-6">
           {/* Main section */}
-          <Col numColSpanLg={4}>
+          <Col numColSpanLg={5}>
             <Block spaceY="space-y-6">
               <Card
                 maxWidth="max-w-none"
@@ -88,6 +119,8 @@ export default function Input() {
                         .then((response) => response.json())
                         .then((data) => {
                           console.log("Success:", data);
+                          setOutput(data);
+                          setJobId(data.job_id);
                           setLoading(false);
                         })
                         .catch((error) => {
@@ -126,21 +159,55 @@ export default function Input() {
                 </div>
               </Card>
               <Card>
-                <video id="video" controls src={input ? input : null}></video>
+                <div className="space-y-2">
+                  <video id="video" controls src={input ? input : null}></video>
+                  <div className="mb-2">
+                    <Label>Search Query</Label>
+                    <input
+                      id="search-query"
+                      type="text"
+                      className="w-full p-2 rounded-md focus:border-blue-600"
+                      placeholder="Enter a search query to find a section of the meeting"
+                    />
+                  </div>
+                  <Button
+                    size="sm"
+                    importance="secondary"
+                    text="Search"
+                    color="blue"
+                    handleClick={() => {
+                      console.log("Making search query");
+                      let video = document.getElementById("video");
+                      let query = document.getElementById("search-query").value;
+                      console.log(jobId, query);
+
+                      fetch("http://127.0.0.1:8000/search", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          job_id: jobId,
+                          query: query,
+                        }),
+                      })
+                        .then((response) => response.json())
+                        .then((data) => {
+                          console.log("Success:", data);
+                          video.currentTime = data[0][0];
+                        })
+                        .catch((error) => {
+                          console.error("Error:", error);
+                        });
+                    }}
+                  />
+                </div>
               </Card>
             </Block>
           </Col>
-          <Col numColSpanLg={2}>
+          <Col numColSpanLg={3}>
             <Block spaceY="space-y-6">
-              <Card>
-                <div className="h-24" />
-              </Card>
-              <Card>
-                <div className="h-24" />
-              </Card>
-              <Card>
-                <div className="h-24" />
-              </Card>
+              <Card>{output && <JSONView data={output} />}</Card>
             </Block>
           </Col>
         </ColGrid>
