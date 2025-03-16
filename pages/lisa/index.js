@@ -203,11 +203,72 @@ export default function Input() {
                   />
                 </div>
               </Card>
+              <Card>
+                <Title>Transcription</Title>
+                {output && output.transcription && (
+                  <div className="max-h-96 overflow-y-auto">
+                    {output.transcription.split("\n").map((line, index) => {
+                      // Check if line contains timestamp pattern [00:00.000]:
+                      const match = line.match(/^\[(\d+:\d+\.\d+)\]:(.*)/);
+                      if (match) {
+                        const timestamp = match[1];
+                        const text = match[2];
+                        return (
+                          <div key={index} className="flex mb-2">
+                            <div className="w-24 flex-shrink-0 font-mono mr-2">
+                              [{timestamp}]
+                            </div>
+                            <div className="flex-grow">{text.trim()}</div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={index} className="mb-2">
+                          {line}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </Card>
             </Block>
           </Col>
           <Col numColSpanLg={3}>
             <Block spaceY="space-y-6">
-              <Card>{output && <JSONView data={output} />}</Card>
+              <Card>
+                <Title>Minutes-of-Meeting</Title>{" "}
+                {output && output.minutes && (
+                  <div className="ml-4">
+                    <ul className="list-disc">
+                      {output.minutes.map((item, index) => (
+                        <li key={index} className="mb-2">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </Card>
+              <Card>
+                <Title>Action Items</Title>{" "}
+                {output &&
+                output.action_items &&
+                output.action_items.length > 0 ? (
+                  <div className="ml-4">
+                    <ul className="list-disc">
+                      {output.action_items.map((item, index) => (
+                        <li key={index} className="mb-2">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div className="ml-4 mt-2 text-gray-600">
+                    No action items found
+                  </div>
+                )}
+              </Card>
             </Block>
           </Col>
         </ColGrid>
